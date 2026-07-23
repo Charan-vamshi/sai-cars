@@ -41,6 +41,48 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* Skip to content — visible on focus for keyboard users */
+.skip-link {
+  position: fixed;
+  top: -100%;
+  left: 1rem;
+  z-index: 9999;
+  padding: 0.5rem 1.2rem;
+  background: var(--cyan);
+  color: #000;
+  font-weight: 700;
+  font-size: 0.85rem;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: top 0.2s ease;
+}
+.skip-link:focus { top: 1rem; }
+
+/* Keyboard navigation hint on landing */
+.keyboard-hint {
+  position: absolute;
+  bottom: 5.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
+  opacity: 0;
+  animation: fadeIn 1s ease 2.5s forwards;
+  white-space: nowrap;
+}
+kbd {
+  display: inline-block;
+  padding: 0.1rem 0.4rem;
+  border: 1px solid var(--glass-border);
+  border-radius: 4px;
+  font-size: 0.7rem;
+  background: rgba(255,255,255,0.05);
+  font-family: var(--ff-mono);
+  color: var(--cyan);
+}
+
+
 /* ─── Background Canvas (fixed, behind everything) ──────────────────────────── */
 #bg-canvas {
   position: fixed;
