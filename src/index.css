@@ -727,3 +727,32 @@ body {
   .features-grid { grid-template-columns: 1fr; }
   .landing-name { font-size: 3rem; }
 }
+
+/* ─── Reduced Motion ─────────────────────────────────────────────────────────
+   Respect OS-level "Reduce Motion" setting. Disables all CSS animations and
+   transitions for users who are sensitive to motion. Framer Motion also
+   honours this automatically via its built-in reduced-motion detection.
+────────────────────────────────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .car-fog,
+  .car-ground-glow,
+  .car-glow-halo,
+  .car-img-inner,
+  .landing-eyebrow,
+  .landing-name,
+  .landing-tagline,
+  .landing-scroll-cue {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
