@@ -55,6 +55,16 @@ function App() {
     return () => observers.forEach((o) => o.disconnect());
   }, []);
 
+  // Update browser tab title based on active section
+  useEffect(() => {
+    if (activeIdx === 0) {
+      document.title = 'Sai Charan Reddy | Built for Speed';
+    } else {
+      const car = CARS[activeIdx - 1];
+      document.title = `${car.name} — Sai Cars`;
+    }
+  }, [activeIdx]);
+
   // Keyboard navigation (ArrowDown / ArrowUp)
   useEffect(() => {
     const onKey = (e) => {
