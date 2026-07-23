@@ -9,7 +9,7 @@ import { CARS }      from '../../data/cars';
 
 // Sets the --car-accent CSS variable on the section element so all
 // child components automatically inherit the right neon colour.
-const CarPage = ({ car, sectionRef, onNext }) => {
+const CarPage = ({ car, sectionRef, onNext, priority = false }) => {
   const nextCarObj = car.nextCar ? CARS.find((c) => c.id === car.nextCar) : null;
 
   return (
@@ -23,7 +23,7 @@ const CarPage = ({ car, sectionRef, onNext }) => {
       }}
     >
       {/* 1. Hero — large image + entrance animation */}
-      <CarHero car={car} />
+      <CarHero car={car} priority={priority} />
 
       {/* 2. Animated stat counters */}
       <CarStats stats={car.heroStats} />

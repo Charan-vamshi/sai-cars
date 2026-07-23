@@ -13,7 +13,12 @@ import {
 const SPRING = { stiffness: 60, damping: 18, mass: 1.1 };
 
 // ─────────────────────────────────────────────────────────────────────────────
-const CarHero = ({ car }) => {
+/**
+ * @param {object} props
+ * @param {object} props.car       - Car data object from cars.js
+ * @param {boolean} props.priority - true for first car (eager load), false for rest (lazy)
+ */
+const CarHero = ({ car, priority = false }) => {
   const sectionRef  = useRef();
   const innerRef    = useRef();               // CSS 3D tilt target
   const mouseRef    = useRef({ x: 0, y: 0 }); // raw cursor normalised -1→1
@@ -137,6 +142,10 @@ const CarHero = ({ car }) => {
               src={car.image}
               alt={car.name}
               draggable={false}
+              loading={priority ? 'eager' : 'lazy'}
+              fetchPriority={priority ? 'high' : 'low'}
+              width={940}
+              height={529}
               style={{ position: 'relative', zIndex: 2 }}
             />
 

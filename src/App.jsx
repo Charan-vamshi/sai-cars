@@ -110,6 +110,7 @@ function App() {
           <div key={car.id} ref={(el) => (sectionRefs.current[i + 1] = el)}>
             <CarPage
               car={car}
+              priority={i === 0}
               onNext={() => {
                 if (i + 2 < TOTAL) scrollToSection(i + 2, true);
               }}
