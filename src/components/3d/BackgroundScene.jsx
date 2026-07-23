@@ -1,3 +1,21 @@
+/**
+ * @file BackgroundScene.jsx
+ *
+ * Renders 14 miniature toy-car objects as the persistent background scene.
+ *
+ * Architecture:
+ *  - Each car is composed of 4 part types: body, cabin, wheels (×4), headlights (×2).
+ *  - All instances use InstancedMesh so the TOTAL draw call budget is:
+ *      4 parts × 2 colour batches (cyan + magenta) = 8 draw calls for 14 cars.
+ *  - Geometry objects are created at module scope and shared across all instances.
+ *  - The `_cursorX/_cursorY` module variables are written by App's global
+ *    mousemove listener and read inside useFrame — zero React state updates.
+ *  - Per-car physics state uses Float32Arrays (not objects/arrays of objects)
+ *    for cache locality and minimal GC pressure.
+ *
+ * @module BackgroundScene
+ */
+
 import React, { useRef, useMemo } from 'react';
 import { useFrame }                from '@react-three/fiber';
 import * as THREE                  from 'three';
